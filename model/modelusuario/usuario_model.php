@@ -96,9 +96,8 @@ class Usuario_model
 			while($fila = mysqli_fetch_array($this->result))
 			{
 				$_SESSION['personaID'] = $fila['personaID'];
-				$_SESSION['usuario'] = $fila['usuarioLogin'];
-				//$_SESSION['veterinarioID'] = $fila['personalCodigo'];
-				$_SESSION['usuarioDNI'] = $fila['personaDNI'];
+				$_SESSION['usuario'] = $fila['usuarioLogin'];				
+				$_SESSION['usuarioDNI'] = $fila['usuarioDNI'];
 				$_SESSION['usuarioExtraordinario'] = $fila['extraordinario'];				
 			}
 			echo '1';
