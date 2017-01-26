@@ -21,6 +21,9 @@
     $param['param_fileArchivoVideo'] = '';   
     $param['rutaVideo'] = '';
     $param['param_tipoVideo'] = '';
+    $param['param_codigo'] = '';
+
+    
    
               
     if(isset($_POST['param_opcion'])){ $param['param_opcion'] = $_POST['param_opcion']; }
@@ -31,6 +34,9 @@
     if(isset($_POST['noticia'])){ $param['noticia'] = $_POST['noticia']; }
 
     if(isset($_POST['contenido'])){ $param['contenido'] = $_POST['contenido']; }
+
+
+    if(isset($_POST['param_codigo'])){ $param['param_codigo'] = $_POST['param_codigo']; }
 
     if(isset($_FILES['Imagen']['name'])){ 
         $param['param_archivoImagen'] = $_FILES['Imagen']['name']; 

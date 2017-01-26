@@ -25,7 +25,14 @@
                     break;
                 case 'listar_all_noticias':
                     echo $this->listar_all_noticias();
+                    break; 
+                case 'listar_noticias_extraordinario':
+                    echo $this->listar_noticias_extraordinario();
                     break;
+                case 'eliminar_noticia':
+                    echo $this->eliminar_noticia();
+                    break;
+
                 case "get":break; 
             }
         }
@@ -39,7 +46,8 @@
             $consultaSql.="'".$this->param['multimedia']."',";
             $consultaSql.="'".$this->param['rutaImagen']."',";
             $consultaSql.="'".$this->param['rutaVideo']."',";        
-            $consultaSql.="'".$codigo."')";                    
+            $consultaSql.="'".$codigo."',";     
+            $consultaSql.="'".$_SESSION['personaID']."')";             
             //echo $consultaSql;            
             $this->result = mysqli_query($this->conexion,$consultaSql);    
         }
@@ -85,6 +93,30 @@
         }
 
 
+        function listar_noticias_extraordinario() {    
+            $i = 0;    
+            $this->prepararConsultaGestionarNoticia('opc_mostrar_noticias_extraordinario','');
+            $this->cerrarAbrir();
+            while($row = mysqli_fetch_row($this->result)){  
+                $i++;               
+                echo '<tr>
+                    <td style="text-align: center;font-size: 12px; height: 10px; width: 5%;">'.$i.'</td>
+                    <td style="font-size: 12px; height: 10px; width: 40%;">'.($row[1]).'</td>
+                    <td style="font-size: 12px; height: 10px; width: 20%;">'.($row[6]).'</td>
+                    <td style="font-size: 12px; height: 10px; width: 15%;">'.($row[3]).' '.($row[4]).'</td>
+                    <td style="font-size: 12px; height: 10px; width: 10%; text-align: center;">                                
+                                
+                        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                            <span class="red">
+                                <i class="ace-icon fa fa-trash-o bigger-150" onClick="eliminar('."'".$row[0]."'".')"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>';
+            }
+        }
+
+
 
         function listar_all_noticias() {        
             $this->prepararConsultaGestionarNoticia('opc_mostrar_all_noticias','');
@@ -107,6 +139,12 @@
                 </div><br>';
             
             }            
+        }
+
+        function eliminar_noticia() {        
+            $this->prepararConsultaGestionarNoticia('opc_eliminar_noticia',$this->param['noticia']);
+            $this->cerrarAbrir();
+            echo 1;
         }
 
         function noticia_informacion() {        
