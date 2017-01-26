@@ -1,6 +1,7 @@
 window.onload = function () {
 
     mostrarForo();
+    alerta_spa();
     
 	$('*').bind("cut copy paste",function(e) {
 		e.preventDefault();
@@ -133,4 +134,16 @@ function soloLetras(e){
     if(letras.indexOf(tecla)==-1 && !tecla_especial){
         return false;
     }
+}
+
+function alerta_spa()
+{
+    $.ajax({
+        type:'POST',
+        data: {opcion:'alerta_spa'},
+        url: "controller/controlusuario/usuario.php",
+        success:function(data){                          
+            $('#alertaspa').html(data);
+        }
+    }); 
 }
