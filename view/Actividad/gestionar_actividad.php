@@ -277,8 +277,8 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
-							Application &copy; 2013-2014
+							<span class="blue bolder"> MUNICIPIO PS</span>
+							2017
 						</span>
 
 						&nbsp; &nbsp;
@@ -657,13 +657,13 @@ function inicar_calendario(eventos){
 				else if(prioridad == 2) label = "label-yellow";
 				else if(prioridad == 3) label = "label-important";
 				
-				calEvent.title = $(this).find("input[id=txtActividad]").val();
-				calEvent.className = label;
+				calEvent.title 		= $(this).find("input[id=txtActividad]").val();
+				calEvent.className 	= label;
 
-				calEvent.actividadID = $(this).find("input[id=txtActividadID]").val();
-				calEvent.ambitoID = $(this).find("select[id=cboAmbito]").val();
-				calEvent.descripcion = $(this).find("textarea[id=txtDescripcion]").val();
-				calEvent.lugar = $(this).find("input[id=txtLugar]").val();
+				calEvent.actividadID 	= $(this).find("input[id=txtActividadID]").val();
+				calEvent.ambitoID 		= $(this).find("select[id=cboAmbito]").val();
+				calEvent.descripcion 	= $(this).find("textarea[id=txtDescripcion]").val();
+				calEvent.lugar 			= $(this).find("input[id=txtLugar]").val();
 				var opcion = 3;
 			  	$.ajax({
 			      	type: 'POST',        
