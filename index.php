@@ -1,5 +1,5 @@
 <?php	
-	include('scripts/captcha.php');
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">	
@@ -56,7 +56,7 @@
 						</button>
 						<!-- end: RESPONSIVE MENU TOGGLER -->
 						<!-- start: LOGO -->
-						<a class="navbar-brand" href="index.html" style="color: #000000;">
+						<a class="navbar-brand"  style="color: #000000;">
 							FORO ESCOLAR PS <i class="clip-bubbles-2" style="color: #3d9400"></i>
 						</a>
 						<!-- end: LOGO -->
@@ -64,13 +64,18 @@
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li class="active">
-								<a href="http://ps.edu.pe/psweb/">
+								<a href="#">
 									Inicio
 								</a>
 							</li>
 							<li>
 								<a href="view/home/login.php">
 									Municipio
+								</a>
+							</li>	
+							<li>
+								<a href="http://ps.edu.pe/psweb/" target="_blank">
+									Portal Web
 								</a>
 							</li>
 						</ul>
@@ -92,7 +97,7 @@
 										<div class="col-md-12">
 											<div class="post-content">
 												<h2>
-												<a href="blog_post.html" style="color: #134984;">
+												<a style="color: #134984;">
 													¿Cuándo comenzarán las clases?
 												</a></h2>
 												<p>
@@ -107,79 +112,15 @@
 												<span><i class="fa fa-calendar"></i> Enero 22, 2017 </span>
 												<span><i class="fa fa-clock-o"></i> 9:23 pm.</span>
 												<span><i class="fa fa-user"></i> Por
-													<a href="#">
+													<a>
 														Administrador
 													</a> 
-												</span>												
-												<a class="btn btn-xs pull-right" style="background-color: #134984; color: white;" href="blog_post.html">
-													Leer más...
-												</a>
+												</span>											
+												
 											</div>
 										</div>
 									</div>
-								</article>
-								<article>
-									<div class="row">										
-										<div class="col-md-12">
-											<div class="post-content">
-												<h2>
-												<a href="blog_post.html" style="color: #134984;">
-													¿Cómo se realizará la apertura 2017?
-												</a></h2>
-												<p>
-													Euismod atras vulputate iltricies etri elit per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="post-meta">
-												<span><i class="fa fa-calendar"></i> Enero 22, 2017 </span>
-												<span><i class="fa fa-clock-o"></i> 9:23 pm.</span>
-												<span><i class="fa fa-user"></i> Por
-													<a href="#">
-														Administrador
-													</a> 
-												</span>												
-												<a class="btn btn-xs pull-right" style="background-color: #134984; color: white;" href="blog_post.html">
-													Leer más...
-												</a>
-											</div>
-										</div>
-									</div>
-								</article>
-								<article>
-									<div class="row">										
-										<div class="col-md-12">
-											<div class="post-content">
-												<h2>
-												<a href="blog_post.html" style="color: #134984;">
-													Fiesta de Aniversario
-												</a></h2>
-												<p>
-													Euismod atras vulputate iltricies etri elit per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="post-meta">
-												<span><i class="fa fa-calendar"></i> Enero 22, 2017 </span>
-												<span><i class="fa fa-clock-o"></i> 9:23 pm.</span>
-												<span><i class="fa fa-user"></i> Por
-													<a href="#">
-														Administrador
-													</a> 
-												</span>												
-												<a class="btn btn-xs pull-right" style="background-color: #134984; color: white;" href="blog_post.html">
-													Leer más...
-												</a>
-											</div>
-										</div>
-									</div>
-								</article>
+								</article>								
 								<ul class="pagination">
 									<li>
 										<a href="#">
@@ -212,7 +153,7 @@
 						<div class="col-md-3">
 							<aside class="sidebar">
 								<form>									
-									<a href="#modal_question" data-toggle="modal" class="btn btn-primary btn-lg btn-block">Haz tu pregunta aquí
+									<a href="#" id="btn_nueva_pregunta" class="btn btn-primary btn-lg btn-block">Haz tu pregunta aquí
 										<i class="fa fa-question-circle"></i>
 									</a>
 									
@@ -234,16 +175,13 @@
 										</div>										
 									</div>
 								</div>
-								<hr>
-								<h4>Sobre Nosotros</h4>
-								<p>
-									Culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus.
-								</p>
-							</aside>
+								<hr>								
+								<img src="assets/images/logo_ps.jpg" class="img-responsive">			
+							</aside>	
 						</div>
 					</div>
 				</div>
-				<div id="modal_question" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+				<div id="modal_pregunta" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
@@ -251,6 +189,7 @@
 						<h4 class="modal-title">Enviar mi pregunta</h4>
 					</div>
 					<div class="modal-body">
+						<div id="mensaje"></div>
 						<div class="row">		
 							<div class="col-md-4" style="width: 30%;">
 								<img class="img img-responsive" src="assets/images/pregunta.png">
@@ -261,25 +200,25 @@
 									<label class="control-label">
 										NOMBRES <span class="symbol required"></span>
 									</label>
-									<input type="text" id="nombre" name="nombre" class="form-control" >
+									<input type="text" id="nombre_estudiante" name="nombre_estudiante" class="form-control" maxlength="100" onkeypress="return soloLetras(event)">
 								</div>
 								<div class="col-md-12 form-group">
 									<label class="control-label">
 										APELLIDOS <span class="symbol required"></span>
 									</label>
-									<input type="text" id="apellido" name="apellido" class="form-control" >
+									<input type="text" id="apellido_estudiante" name="apellido_estudiante" class="form-control" maxlength="100" onkeypress="return soloLetras(event)">
 								</div>
 								<div class="col-md-12 form-group">
 									<label class="control-label">
 										CÓDIGO ESTUDIANTE <span class="symbol required"></span>
 									</label>
-									<input type="text" id="codigo_estudiante" name="codigo_estudiante" class="form-control" >
+									<input type="text" id="codigo_estudiante" name="codigo_estudiante" class="form-control" maxlength="30">
 								</div>
 								<div class="col-md-12 form-group">
 									<label class="control-label">
 										MENSAJE <span class="symbol required"></span>
 									</label>
-									<textarea type="text" id="mensaje" name="mensaje" class="form-control" rows="3"></textarea> 
+									<textarea type="text" id="mensaje_estudiante" name="mensaje_estudiante" class="form-control" rows="3"></textarea> 
 								</div>
 								<div class="col-md-12">
 									<label class="control-label">
@@ -287,17 +226,17 @@
 									</label>									
 								</div>
 								<div class="col-md-6">
-									<input type="text" id="codigo_captcha" name="codigo_captcha" class="form-control" >
+									<input type="text" id="codigo_captcha" name="codigo_captcha" class="form-control">
 								</div>
 								<div class="col-md-6">
-									<input type="text" id="codigo_captcha" name="codigo_captcha" class="form-control text-center" style="background-color: #0c173e; font-size: 18px; font-weight: 500; color: white;" disabled="disabled" value=<?php echo codigo_captcha(); ?> >
+									<input type="text" id="captcha" name="captcha" class="form-control text-center" style="background-color: #0c173e; font-size: 18px; font-weight: 500; color: white;" disabled="disabled" >
 								</div>
 							</div>						
 												
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" data-dismiss="modal" class="btn btn-light-grey">
+						<button type="button" class="btn btn-light-grey" id="btn_cancelar_pregunta">
 							Cancelar
 						</button>
 						<button type="button" class="btn btn-primary" id="btn_enviar_pregunta">
@@ -336,6 +275,11 @@
 											Municipio
 										</a>
 									</li>
+									<li>
+										<a href="http://ps.edu.pe/psweb/" target="_blank" style="color: #b0b6bd;">
+											Portal Web
+										</a>
+									</li>
 								</ul>
 							</nav>
 						</div>
@@ -367,12 +311,10 @@
 		<script src="assets/plugins/ckeditor/adapters/jquery.js"></script>
 		<script src="assets/js/form-validation.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="view/default/js/foro.js"></script>
 		<script>
 			jQuery(document).ready(function() {
-				Main.init();
-				$('*').bind("cut copy paste",function(e) {
-			      e.preventDefault();
-    			});
+				Main.init();				
 			});
 		</script>
 	</body>
