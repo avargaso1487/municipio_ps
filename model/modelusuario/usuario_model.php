@@ -238,12 +238,16 @@ class Usuario_model
 			echo '		</ul>
 					</li>
 
+<<<<<<< HEAD
 					<li class="dropdown-footer">
 						<a href="../foro/questions.php">
 							Ver Preguntas
 							<i class="ace-icon fa fa-arrow-right"></i>
 						</a>
 					</li>
+=======
+					
+>>>>>>> 6143188894cde1ba23b0a2716fee06d686dc1019
 				</ul>
 					';
 	
@@ -255,45 +259,39 @@ class Usuario_model
 		$total_alertas = $this->ejecutarConsultaRespuestaAlertaSpa();
 		
 		echo '	<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<i class="ace-icon fa fa-paw icon-animated-bell"></i>
+					<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 					<span class="badge badge-important">'.$total_alertas.'</span>
 				</a>';
 		echo '	
 				<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 					<li class="dropdown-header">
 						<i class="ace-icon fa fa-exclamation-triangle"></i>
-						'.$total_alertas.' Servicios pendientes
+						'.$total_alertas.' Actividades pendientes
 					</li>
 
 					<li class="dropdown-content">
-						<ul class="dropdown-menu dropdown-navbar navbar-pink">
+						
 				';
 			$this->cerrarAbrir();
 			$this->prepararConsultaAlertaSpa('opc_spa_alertas');
 			$datos = $this->getArraySpa();
 			for($i=0; $i<count($datos); $i++)
 			{
-				echo'			<li>								
-								<div class="clearfix">
-									<span class="pull-left">
-										<i class="btn btn-xs no-hover btn-success fa fa-male"></i>
-										'.$datos[$i]["alertaPersona"].'
-									</span>
-									<span class="pull-right badge badge-success">'.$datos[$i]["alertaFecha"].'</span>
-								</div>								
-							</li>
+				echo'										
+								
+									
+									<ul>	
+									
+									<span class="pull-left badge badge-primary">'.$datos[$i]["alertaPersona"].': '.$datos[$i]["alertaFecha"].'</span>
+									</ul>					
+								
 							';
 			}			
 
-			echo '		</ul>
+			echo '		
 					</li>
 
-					<li class="dropdown-footer">
-						<a href="../spa/recordatorio.php">
-							Ver recordatorio
-							<i class="ace-icon fa fa-arrow-right"></i>
-						</a>
-					</li>
+					
 				</ul>
 					';
 	
@@ -301,7 +299,7 @@ class Usuario_model
 
 	function prepararConsultaAlertaSpa($opcion='')
 	{
-		$consultaSql3 = "call sp_control_alerta_spa(";
+		$consultaSql3 = "call sp_control_alerta(";
 		$consultaSql3.="'".$opcion."')";
 		//echo $consultaSql;
 		$this->result3 = mysqli_query($this->conexion,$consultaSql3);
