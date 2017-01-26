@@ -41,13 +41,18 @@ class Usuario_Model {
         }
     }    
 
-    function prepararConsultaUsuario($usuario = '') {
+    function prepararConsultaUsuario($opcion = '') {
         $consultaSql = "call sp_control_usuarioview(";
-        $consultaSql.= "'".$usuario."',";
-        $consultaSql.= "'".$this->param['param_usuarioColaborador']."',";        
+        $consultaSql.= "'".$opcion."',";
+        $consultaSql.= "'".$this->param['param_usuarioId']."',";
+        $consultaSql.= "'".$this->param['param_usuarioNombre']."',";
+        $consultaSql.= "'".$this->param['param_usuarioApellidos']."',";
+        $consultaSql.= "'".$this->param['param_usuarioDNI']."',";                
+        $consultaSql.= "'".$this->param['param_usuarioDireccion']."',";
+        $consultaSql.= "'".$this->param['param_usuarioNacimiento']."',";
+        $consultaSql.= "'".$this->param['param_usuarioMovil']."',";
         $consultaSql.= "'".$this->param['param_usuarioLogin']."',";
-        $consultaSql.= "'".$this->param['param_usuarioPassword']."',";        
-        $consultaSql.= "'".$_SESSION['usuarioSucursalID']."',";                
+        $consultaSql.= "'".$this->param['param_usuarioPassword']."',";                
         $consultaSql.= "'".$this->param['param_usuarioRol']."',";                        
         $consultaSql.= "'".$this->param['param_usuarioEstado']."')";
 

@@ -4,8 +4,15 @@ include_once '../../model/modelAdministracion/usuarios_model.php';
 
 $param = array();
 $param['param_opcion']             ='';
-$param['param_personaId']          ='';
-$param['param_usuarioColaborador'] ='';
+
+$param['param_usuarioId']           ='';
+$param['param_usuarioNombre']     ='';
+$param['param_usuarioApellidos']  ='';
+$param['param_usuarioDNI']        ='';
+$param['param_usuarioDireccion']  ='';
+$param['param_usuarioNacimiento'] ='';
+$param['param_usuarioMovil']      ='';
+
 $param['param_usuarioLogin']       ='';
 $param['param_usuarioPassword']    ='';
 $param['param_usuarioRol']         ='';
@@ -14,12 +21,27 @@ $param['param_usuarioEstado']      ='';
 
     if(isset($_POST['param_opcion']))
     $param['param_opcion']             = $_POST['param_opcion'];
+
+    if(isset($_POST['param_usuarioId']))
+    $param['param_usuarioId']             = $_POST['param_usuarioId'];
+
+    if(isset($_POST['param_usuarioNombre']))
+    $param['param_usuarioNombre']       = $_POST['param_usuarioNombre'];
     
-    if(isset($_POST['param_personaId']))
-    $param['param_personaId']          = $_POST['param_personaId'];
+    if(isset($_POST['param_usuarioApellidos']))
+    $param['param_usuarioApellidos']      = $_POST['param_usuarioApellidos'];
     
-    if(isset($_POST['param_usuarioColaborador']))
-    $param['param_usuarioColaborador'] = $_POST['param_usuarioColaborador'];
+    if(isset($_POST['param_usuarioDNI']))
+    $param['param_usuarioDNI']      = $_POST['param_usuarioDNI'];
+    
+    if(isset($_POST['param_usuarioDireccion']))
+    $param['param_usuarioDireccion']      = $_POST['param_usuarioDireccion'];
+    
+    if(isset($_POST['param_usuarioMovil']))
+    $param['param_usuarioMovil']      = $_POST['param_usuarioMovil'];
+
+    if(isset($_POST['param_usuarioNacimiento']))
+    $param['param_usuarioNacimiento'] = $_POST['param_usuarioNacimiento'];
     
     if(isset($_POST['param_usuarioLogin']))
     $param['param_usuarioLogin']       = $_POST['param_usuarioLogin'];

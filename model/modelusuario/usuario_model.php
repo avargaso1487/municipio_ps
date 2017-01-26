@@ -31,11 +31,11 @@ class Usuario_model
 			case 'mostrarMenu':
 				echo $this->mostrarMenu();
 				break;
-			case 'alerta_almacen':
-				echo $this->alerta_almacen();
+			case 'alerta_mensajes':
+				echo $this->alerta_mensajes();
 				break;
-			case 'alerta_spa':
-				echo $this->alerta_spa();
+			case 'alerta_actividades':
+				echo $this->alerta_actividades();
 				break;
 		}
 	}
@@ -68,15 +68,15 @@ class Usuario_model
         return $respuesta;
     }
 
-    function prepararConsultaAlertaAlmacen($opcion='')
+    function prepararConsultaAlertaMensaje($opcion='')
 	{
-		$consultaSql3 = "call sp_control_alerta_almacen(";
+		$consultaSql3 = "call sp_control_alerta_mensaje(";
 		$consultaSql3.="'".$opcion."')";
-		//echo $consultaSql;
+		//echo $consultaSql3;
 		$this->result3 = mysqli_query($this->conexion,$consultaSql3);
 	}
 
-	function ejecutarConsultaRespuestaAlertaAlmacen() {
+	function ejecutarConsultaRespuestaAlertaMensaje() {
         $respuesta3 = '';
         while ($fila3 = mysqli_fetch_array($this->result3)) {
             $respuesta3 = $fila3['total'];
@@ -179,51 +179,59 @@ class Usuario_model
 		}
 	}
 
-	private function getArrayAlertas()
+	private function getArrayAlertasMensajes()
     {
         $datos3 = array();
         while($fila3 = mysqli_fetch_array($this->result3))
         {
             array_push($datos3, array(
-                "alertaProducto" => $fila3["producto"],
-                "alertaCantidad" => $fila3["faltante"]));
+                "autorPregunta" => $fila3["autor"],
+                "pregunta" => $fila3["pregunta"],
+                "horaPregunta" => $fila3["hora"],
+                "fechaPregunta" => $fila3["fecha"]));
         }
         return $datos3;
     }
 
-	private function alerta_almacen()
+	private function alerta_mensajes()
 	{
-		$this->prepararConsultaAlertaAlmacen('opc_cantidad_alertas');
-		$total_alertas = $this->ejecutarConsultaRespuestaAlertaAlmacen();
+		$this->prepararConsultaAlertaMensaje('opc_cantidad_alertas');
+		$total_alertas = $this->ejecutarConsultaRespuestaAlertaMensaje();
 		
 		echo '	<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-					<span class="badge badge-important">'.$total_alertas.'</span>
+					<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+					<span class="badge badge-success">'.$total_alertas.'</span>
 				</a>';
 		echo '	
-				<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+				<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
 					<li class="dropdown-header">
-						<i class="ace-icon fa fa-exclamation-triangle"></i>
-						'.$total_alertas.' Productos Faltantes
+						<i class="ace-icon fa fa-envelope-o"></i>
+						'.$total_alertas.' Pregunta(s)
 					</li>
 
 					<li class="dropdown-content">
-						<ul class="dropdown-menu dropdown-navbar navbar-pink">
+						<ul class="dropdown-menu dropdown-navbar">
 				';
 			$this->cerrarAbrir();
-			$this->prepararConsultaAlertaAlmacen('opc_productos_alertas');
-			$datos = $this->getArrayAlertas();
+			$this->prepararConsultaAlertaMensaje('opc_mensajes_alertas');
+			$datos = $this->getArrayAlertasMensajes();
 			for($i=0; $i<count($datos); $i++)
 			{
-				echo'			<li>								
-								<div class="clearfix">
-									<span class="pull-left">
-										<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-										'.$datos[$i]["alertaProducto"].'
-									</span>
-									<span class="pull-right badge badge-success">'.$datos[$i]["alertaCantidad"].'</span>
-								</div>								
-							</li>
+				echo'			<li>						
+									<a href="#">
+										<span class="msg-title">
+											<i class="btn btn-xs no-hover btn-success fa fa-user"></i>
+											<span class="blue">'.$datos[$i]["autorPregunta"].':</span> <br>
+											'.$datos[$i]["pregunta"].'
+										</span>
+										<span class="msg-time">
+											<i class="ace-icon fa fa-clock-o"></i>
+											<span>'.$datos[$i]["horaPregunta"].'</span>
+											<i class="ace-icon fa fa-calendar"></i>
+											<span>'.$datos[$i]["fechaPregunta"].'</span>
+										</span>										
+									</a>
+								</li>
 							';
 			}			
 
@@ -231,8 +239,8 @@ class Usuario_model
 					</li>
 
 					<li class="dropdown-footer">
-						<a href="../almacen/inventario.php">
-							Ver inventario
+						<a href="../foro/questions.php">
+							Ver Preguntas
 							<i class="ace-icon fa fa-arrow-right"></i>
 						</a>
 					</li>
@@ -318,7 +326,5 @@ class Usuario_model
         }
         return $datos3;
     }
-
-
 }
  ?>

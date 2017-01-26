@@ -104,23 +104,9 @@
 									</a>
 									
 								</form>
+								<hr>																
 								<hr>								
-								<div class="tabs">
-									<ul class="nav nav-tabs">
-										<li class="active">
-											<a data-toggle="tab" href="#busqueda_posts"><i class="fa fa-search"></i> Búsqueda</a>
-										</li>										
-									</ul>
-									<div class="tab-content">
-										<div id="busqueda_posts" class="tab-pane active">										<div>
-												<input type="text" name="buscar_post" id="buscar_post" class="form-control">
-											</div>	
-											<div class="form-group">
-																	
-											</div>						
-										</div>										
-									</div>
-								</div>
+								<hr>								 
 								<hr>								
 								<img src="assets/images/logo_ps.jpg" class="img-responsive">			
 							</aside>	

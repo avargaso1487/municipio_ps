@@ -1,8 +1,8 @@
 window.onload = function(){    
     $('#tablaUsuarios').DataTable();        
     mostrarMenu();
-    mostrarDatosTabla();
-    cargarColaboradores();
+    //mostrarDatosTabla();
+    //cargarColaboradores();
     cargarRoles();
     $('#cancelar').on('click', function(){                    
       $('#modalUsuarios').hide();  
@@ -13,8 +13,7 @@ window.onload = function(){
 
 
 function nuevo(){
-  limpiar();
-  document.getElementById('colaborador').style.display = 'inline';
+  limpiar();  
   document.getElementById('cancelar').style.display = 'inline';
   document.getElementById('guardarUsuario').style.display = 'inline';
   document.getElementById('editarUsuario').style.display = 'none';
@@ -43,14 +42,13 @@ function mostrarDatosTabla(){
 
 function guardar(){
   var param_opcion = "grabar";
-  var v1 = 0, v2 = 0, v3 = 0;
-  v1 = validacion('param_usuarioColaborador');
+  var v1 = 0, v2 = 0, v3 = 0;  
   v2 = validacion('param_usuarioLogin');
   v3 = validacion('param_usuarioPassword');
   v4 = validacion('param_usuarioRol');
   
 
-  if(v1 === false || v2 === false || v3 === false || v4 == false){
+  if(v2 === false || v3 === false || v4 == false){
     $('#exito').hide();
     $('#error').html('<strong>Adventencia: </strong>Los campos resaltados deben ser llenados de forma obligatoria.').show(500).delay(8500).hide(500);
   }
@@ -83,22 +81,7 @@ function guardar(){
 
 function validacion(campo)
 {
-  var a=0;
-  if(campo === 'param_usuarioColaborador')
-  {
-    codigo = document.getElementById(campo).value;
-    if(codigo ==null || codigo.length ==0)
-    {                       
-      $('#'+campo).parent().parent().attr("class", "input-group col-md-12 has-error");            
-            return false;
-    }
-    else 
-    {     
-      $('#'+campo).parent().parent().attr("class", "input-group col-md-12 has-success");            
-      return true;
-    }
-  }
-
+  var a=0;  
 
   if(campo === 'param_usuarioLogin')
   {
@@ -153,14 +136,11 @@ function validacion(campo)
 function limpiar(){  
   $('#exito').hide();
   $('#error').hide(); 
-  
-  $('#param_usuarioColaborador').parent().parent().attr("class", "input-group col-md-12");
-  $('#param_usuarioLogin').parent().parent().attr("class", "form-group col-md-8");
-  $('#param_usuarioPassword').parent().parent().attr("class", "form-group col-md-8");     
+    
+  $('#param_usuarioLogin').parent().parent().attr("class", "form-group col-md-5");
+  $('#param_usuarioPassword').parent().parent().attr("class", "form-group col-md-5");     
   $('#param_usuarioRol').parent().parent().attr("class", "input-group col-md-12");     
-
-  document.getElementById('param_personaId').value = "";
-  document.getElementById('param_usuarioColaborador').value = "";
+  
   document.getElementById('param_usuarioLogin').value = "";
   document.getElementById('param_usuarioPassword').value = "";    
   document.getElementById('param_usuarioRol').value = "";    

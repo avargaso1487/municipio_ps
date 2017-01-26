@@ -235,3 +235,9 @@
 <?php 
 	}
 ?>
+
+<script src="../default/js/alertas.js"></script>
+<script type="text/javascript">
+	alerta_mensajes();
+	//alerta_actividades();
+</script>

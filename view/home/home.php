@@ -373,8 +373,9 @@
 	</body>
 </html>
 <?php } ?>
-<!--
-<script src="../js/alerta.js"></script>
-		<script type="text/javascript">
-			//mostrarAlertaReco();
-		</script>-->
+
+<script src="../default/js/alertas.js"></script>
+<script type="text/javascript">
+	alerta_mensajes();
+	//alerta_actividades();
+</script>

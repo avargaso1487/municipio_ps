@@ -22,6 +22,12 @@
 
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">						
+						
+						<li class="purple" id="alertaactividades">							
+						</li>
+
+						<li class="green" id="alertamensajes">							
+						</li>
 
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">								
