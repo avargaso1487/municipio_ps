@@ -456,7 +456,6 @@
 <script type="text/javascript">
 
 var permiso = <?= $permiso  ?>;
-alert(permiso);
 function inicar_calendario(eventos){
 	var calendar = $('#calendar').fullCalendar({
 		monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
