@@ -91,63 +91,9 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-9">
-							<div class="blog-posts">
-								<article>
-									<div class="row">										
-										<div class="col-md-12">
-											<div class="post-content">
-												<h2>
-												<a style="color: #134984;">
-													¿Cuándo comenzarán las clases?
-												</a></h2>
-												<p>
-													Euismod atras vulputate iltricies etri elit per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="post-meta">
-												<span><i class="fa fa-calendar"></i> Enero 22, 2017 </span>
-												<span><i class="fa fa-clock-o"></i> 9:23 pm.</span>
-												<span><i class="fa fa-user"></i> Por
-													<a>
-														Administrador
-													</a> 
-												</span>											
-												
-											</div>
-										</div>
-									</div>
-								</article>								
-								<ul class="pagination">
-									<li>
-										<a href="#">
-											«
-										</a>
-									</li>
-									<li class="active">
-										<a href="#">
-											1
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											2
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											3
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											»
-										</a>
-									</li>
-								</ul>
+							<div class="blog-posts" id="cuerpo_foro">
+																
+								
 							</div>
 						</div>
 						<div class="col-md-3">
@@ -243,6 +189,8 @@
 							Enviar
 						</button>
 					</div>
+					<input type="hidden" dissabled="true" value="Principal" id="NombreGrupo">
+            		<input type="hidden" dissabled="true" value="Principal" id="NombreTarea">
 				</div>
 			</section>
 		</div>
@@ -311,7 +259,7 @@
 		<script src="assets/plugins/ckeditor/adapters/jquery.js"></script>
 		<script src="assets/js/form-validation.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-		<script src="view/default/js/foro.js"></script>
+		<script src="view/default/js/principal.js"></script>
 		<script>
 			jQuery(document).ready(function() {
 				Main.init();				
