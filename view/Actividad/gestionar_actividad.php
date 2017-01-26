@@ -1,8 +1,11 @@
 <?php 
 	session_start();
+
+	$permiso = $_SESSION['usuarioExtraordinario'];;		//1: Puede agregar, 0:No puede agregar
 	if(!isset($_SESSION['usuario']))
 	{
 		header("Location:../../index.php");
+		
 	}
 	else
 	{
@@ -451,8 +454,15 @@
 
 
 <script type="text/javascript">
+
+var permiso = <?= $permiso  ?>;
+alert(permiso);
 function inicar_calendario(eventos){
 	var calendar = $('#calendar').fullCalendar({
+		monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+        monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+        dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+    	dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
 		//isRTL: true,
 		 buttonHtml: {
 			prev: '<i class="ace-icon fa fa-chevron-left"></i>',
@@ -499,6 +509,9 @@ function inicar_calendario(eventos){
 		selectable: true,
 		selectHelper: true,
 		select: function(start, end, allDay) {
+			if (permiso == 0 ) {
+				return;
+			}
 			abrirModal("#modal_actividad");
 			limpiarForm("#modal_actividad");
 			var d = new Date(start);
@@ -515,8 +528,9 @@ function inicar_calendario(eventos){
 		}
 		,
 		eventClick: function(calEvent, jsEvent, view) {
-			// alert(calEvent.prioridad);
-			//display a modal
+			if (permiso == 0 ) {
+				return;
+			}
 			var modal = '\
 				<div class="modal fade" id="modal_actividad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 				<div class="modal-dialog " style="width: 50% !important;"> \
