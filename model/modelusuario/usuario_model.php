@@ -238,25 +238,22 @@ class Usuario_model
 			echo '		</ul>
 					</li>
 
-<<<<<<< HEAD
+
 					<li class="dropdown-footer">
 						<a href="../foro/questions.php">
 							Ver Preguntas
 							<i class="ace-icon fa fa-arrow-right"></i>
 						</a>
 					</li>
-=======
-					
->>>>>>> 6143188894cde1ba23b0a2716fee06d686dc1019
 				</ul>
 					';
 	
 	}
 
-	private function alerta_spa()
+	private function alerta_actividades()
 	{
-		$this->prepararConsultaAlertaSpa('opc_cantidad_alertas');
-		$total_alertas = $this->ejecutarConsultaRespuestaAlertaSpa();
+		$this->prepararConsultaAlertaActividades('opc_cantidad_alertas');
+		$total_alertas = $this->ejecutarConsultaRespuestaAlertaActividades();
 		
 		echo '	<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 					<i class="ace-icon fa fa-bell icon-animated-bell"></i>
@@ -267,37 +264,35 @@ class Usuario_model
 					<li class="dropdown-header">
 						<i class="ace-icon fa fa-exclamation-triangle"></i>
 						'.$total_alertas.' Actividades pendientes
-					</li>
-
-					<li class="dropdown-content">
-						
+					</li>										
 				';
 			$this->cerrarAbrir();
-			$this->prepararConsultaAlertaSpa('opc_spa_alertas');
+			$this->prepararConsultaAlertaActividades('opc_spa_alertas');
 			$datos = $this->getArraySpa();
 			for($i=0; $i<count($datos); $i++)
 			{
-				echo'										
-								
-									
-									<ul>	
-									
-									<span class="pull-left badge badge-primary">'.$datos[$i]["alertaPersona"].': '.$datos[$i]["alertaFecha"].'</span>
-									</ul>					
-								
-							';
+				echo'			
+					<li class="dropdown-content">							
+						<ul>						
+						<span class="pull-left badge badge-primary">'.$datos[$i]["alertaPersona"].': '.$datos[$i]["alertaFecha"].'</span>
+						</ul>																					
+					</li>
+					';
 			}			
 
-			echo '		
-					</li>
-
-					
-				</ul>
+			echo '												
+				<li class="dropdown-footer">
+					<a href="../Actividad/gestionar_actividad.php">
+						Ver Actividades
+						<i class="ace-icon fa fa-arrow-right"></i>
+					</a>
+				</li>
+			</ul>
 					';
 	
 	}
 
-	function prepararConsultaAlertaSpa($opcion='')
+	function prepararConsultaAlertaActividades($opcion='')
 	{
 		$consultaSql3 = "call sp_control_alerta(";
 		$consultaSql3.="'".$opcion."')";
@@ -305,7 +300,7 @@ class Usuario_model
 		$this->result3 = mysqli_query($this->conexion,$consultaSql3);
 	}
 
-	function ejecutarConsultaRespuestaAlertaSpa() {
+	function ejecutarConsultaRespuestaAlertaActividades() {
         $respuesta3 = '';
         while ($fila3 = mysqli_fetch_array($this->result3)) {
             $respuesta3 = $fila3['total'];

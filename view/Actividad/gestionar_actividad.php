@@ -17,7 +17,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Full Calendar - Ace Admin</title>
+		<title>Municipio - Actividades</title>
 
 		<meta name="description" content="with draggable and editable events" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -30,12 +30,9 @@
 		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
 		<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
 		<link rel="stylesheet" href="assets/alertify/css/alertify.css" />
-
-		
-
+	
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
-
 		<!-- ace styles -->
 		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
@@ -46,74 +43,9 @@
 	</head>
 
 	<body class="no-skin">
-		<div id="navbar" class="navbar navbar-default">
-			<script type="text/javascript">
-				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
-			</script>
-
-			<div class="navbar-container" id="navbar-container">
-				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-					<span class="sr-only">Toggle sidebar</span>
-
-					<span class="icon-bar"></span>
-
-					<span class="icon-bar"></span>
-
-					<span class="icon-bar"></span>
-				</button>
-
-				<div class="navbar-header pull-left">
-					<a href="../home/home.php" class="navbar-brand">
-						<small>
-							<i class="fa fa-leaf"></i>
-							MUNICIPIO PS
-						</small>
-					</a>
-				</div>
-				<!-- Cabecera izquierda -->
-
-				<div class="navbar-buttons navbar-header pull-right" role="navigation">
-					<ul class="nav ace-nav">						
-
-						<li class="light-blue">
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">								
-								<span class="user-info">
-									<small>Bienvenido,</small><?php echo $_SESSION['usuario']?>
-								</span>
-
-								<i class="ace-icon fa fa-caret-down"></i>
-							</a>
-
-							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-cog"></i>
-										Settings
-									</a>
-								</li>
-
-								<li>
-									<a href="profile.html">
-										<i class="ace-icon fa fa-user"></i>
-										Profile
-									</a>
-								</li>
-
-								<li class="divider"></li>
-
-								<li>
-									<a href="../../controller/controlusuario/cerrarsesion.php">
-										<i class="ace-icon fa fa-power-off"></i>
-										Logout
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<!-- Cabecera derecha -->
-			</div><!-- /.navbar-container -->
-		</div>
+		<?php 
+			require('../sup_layout.php');
+		 ?>
 
 		<div class="main-container" id="main-container">
 			<script type="text/javascript">
@@ -123,70 +55,10 @@
 			<div id="sidebar" class="sidebar                  responsive">
 				<script type="text/javascript">
 					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-				</script>
+				</script>			
 
-				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success">
-							<i class="ace-icon fa fa-signal"></i>
-						</button>
-
-						<button class="btn btn-info">
-							<i class="ace-icon fa fa-pencil"></i>
-						</button>
-
-						<button class="btn btn-warning">
-							<i class="ace-icon fa fa-users"></i>
-						</button>
-
-						<button class="btn btn-danger">
-							<i class="ace-icon fa fa-cogs"></i>
-						</button>
-					</div>
-
-					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-						<span class="btn btn-success"></span>
-
-						<span class="btn btn-info"></span>
-
-						<span class="btn btn-warning"></span>
-
-						<span class="btn btn-danger"></span>
-					</div>
-				</div><!-- /.sidebar-shortcuts -->
-
-				<ul class="nav nav-list">
-
-					<li class="active">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Actividades </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="active">
-								<a href="form-elements.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Gestión de actividades
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="form-elements-2.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Listado de actividades
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							
-						</ul>
-					</li>
+				<ul class="nav nav-list" id="permisos">
+				
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -265,7 +137,9 @@
 										</div>
 									</div>
 								</div>
-
+								<input type="hidden" dissabled="true" value="Actividades" id="NombreGrupo">
+                            	<input type="hidden" dissabled="true" value="Calendario de Actividades" id="NombreTarea">		
+		
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -527,10 +401,120 @@ function inicar_calendario(eventos){
 		}
 		,
 		eventClick: function(calEvent, jsEvent, view) {
+			var modal = '';
 			if (permiso == 0 ) {
-				return;
+				modal = '\
+				<div class="modal fade" id="modal_actividad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+				<div class="modal-dialog " style="width: 50% !important;"> \
+				<div class="modal-content">\
+				<form method="post" id="form_actividad" enctype="multipart/form-data">\
+				<div class="modal-header">\
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>\
+				<strong>\
+				<h3 style="margin:0px;" id="tituloFormActividad" class="blue" align="center">\
+				Actualizar actividad\
+				</h3>\
+				</strong>\
+				</div>\
+				<!-- /.modal-header -->\
+				<div class="modal-body">\
+				<form id="formPrueba">\
+				<div class="row form-group" >\
+				<div class="col-md-12">\
+				<input type="text" readonly class="form-control input-sm" id="txtActividadID" name="txtActividadID" style="display:none" readonly  value="'+ calEvent.actividadID +'">\
+				</div>\
+				</div>\
+				<div class="row form-group">\
+				<div class="col-md-3" align="right">\
+				<label class="control-label" for="">Fecha</label>\
+				</div>\
+				<div class="col-md-4">\
+				<input type="text" readonly class="form-control input-sm" id="txtFecha" name="txtFecha" readonly style="color:#000" value="'+ calEvent.fecha +'">\
+				</div>\
+				</div>\
+				<div class="row form-group">\
+				<div class="col-md-3" align="right">\
+				<label class="control-label" for="">Ámbito</label>\
+				</div>\
+				<div class="col-md-7">\
+				<div>\
+				<select class="form-control input-sm select" disabled="true" id="cboAmbito" name="cboAmbito" style="color:#000">\
+				<option value="0"> -- SELECCIONAR --</option>\
+				<option value="1" '; if(calEvent.ambitoID == 1) modal = modal+"selected"; modal = modal+ '>INSTITUCIONAL</option>\
+				<option value="2" '; if(calEvent.ambitoID == 2) modal = modal+"selected"; modal = modal+ '>LOCAL</option>\
+				<option value="3" '; if(calEvent.ambitoID == 3) modal = modal+"selected"; modal = modal+ '>REGIONAL</option>\
+				<option value="4" '; if(calEvent.ambitoID == 4) modal = modal+"selected"; modal = modal+ '>NACIONAL</option>\
+				<option value="5" '; if(calEvent.ambitoID == 5) modal = modal+"selected"; modal = modal+ '>INTERNACIONAL</option>\
+				</select>\
+				</div>\
+				</div>\
+				</div>\
+				<div class="row form-group">\
+				<div class="col-md-3" align="right">\
+				<label class="control-label" for="">Actividad</label>\
+				</div>\
+				<div class="col-md-7">\
+				<input type="text" class="form-control input-sm" readonly id="txtActividad" name="txtActividad" style="text-transform:uppercase;color:#000" value="'+ calEvent.title +'" >\
+				</div>\
+				</div>\
+				<div class="row form-group">\
+				<div class="col-md-3" align="right">\
+				<label class="control-label" for="">Descripción</label>\
+				</div>\
+				<div class="col-md-7">\
+				<textarea class="form-control input-sm " id="txtDescripcion" readonly name="txtDescripcion" style="color:#000">'+ calEvent.descripcion +'</textarea>\
+				</div>\
+				</div>\
+				<div class="row form-group">\
+				<div class="col-md-3" align="right">\
+				<label class="control-label" for="">Prioridad</label>\
+				</div>\
+				<div class="col-md-7">\
+				<select class="form-control input-sm select" disabled="true" id="cboPrioridad" name="cboPrioridad" style="color:#000">\
+				<option value="0"> -- SELECCIONAR --</option>\
+				<option value="3" '; if(calEvent.prioridad == 3) modal = modal+"selected"; modal = modal+ '>ALTA</option>\
+				<option value="2" '; if(calEvent.prioridad == 2) modal = modal+"selected"; modal = modal+ '>MEDIA</option>\
+				<option value="1" '; if(calEvent.prioridad == 1) modal = modal+"selected"; modal = modal+ '>BAJA</option>\
+				</select>\
+				</div>\
+				</div>\
+				<div class="row form-group">\
+				<div class="col-md-3" align="right">\
+				<label class="control-label" for="">Lugar</label>\
+				</div>\
+				<div class="col-md-7">\
+				<input type="text" readonly class="form-control input-sm" style="color:#000" id="txtLugar" name="txtLugar"  value="'+ calEvent.lugar +'">\
+				</div>\
+				</div>\
+				<div class="row">\
+				<div class="col-sm-12">\
+				<div class="box-footer">\
+				<div class="form-actions center row">\
+				<div class="col-sm-3 col-sm-offset-9"> \
+				<button type="button" style="display: none;" class="btn btn-sm btn-block" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancelar</button>\
+				</div>\
+				<div class="col-sm-3"> \
+				<button type="submit" style="display: none;" class="btn btn-sm btn-block btn-success"><i class="ace-icon fa fa-check"></i> Actualizar </button>\
+				</div>\
+				</div>\
+				</div>\
+				</div>\
+				</div>\
+				</form>\
+				</div>\
+				<!-- /.modal-body -->\
+				</form>\
+				<!-- /.form -->\
+				</div>\
+				<!-- /.modal-content -->\
+				</div>\
+				<!-- /.modal-Dialog -->\
+				</div>\
+				<!-- /.modalactividades -->';
 			}
-			var modal = '\
+			else
+			{
+				modal = '\
 				<div class="modal fade" id="modal_actividad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 				<div class="modal-dialog " style="width: 50% !important;"> \
 				<div class="modal-content">\
@@ -641,6 +625,8 @@ function inicar_calendario(eventos){
 				<!-- /.modal-Dialog -->\
 				</div>\
 				<!-- /.modalactividades -->';
+			}
+			
 
 			var modal = $(modal).appendTo('body');
 
@@ -774,6 +760,24 @@ jQuery(function($) {
 	</body>
 </html>
 <script type="text/javascript">
+
+function mostrarMenu()
+{    
+    var grupo = document.getElementById('NombreGrupo').value;
+    var tarea = document.getElementById('NombreTarea').value;
+    //alert(grupo);
+    $.ajax({
+        type:'POST',
+        data: 'opcion=mostrarMenu&grupo='+grupo+'&tarea='+tarea,        
+        url: "../../controller/controlusuario/usuario.php",
+        success:function(data){                              
+            $('#permisos').html(data);                
+        }
+    });
+    //alert("kjb");
+}
+
+mostrarMenu();
 function abrirModal(modal){
 	$(modal).modal({
 		show:true
@@ -926,14 +930,8 @@ function valorNoValido(element,valor){
 	cargar_actividades();
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
+<script src="../default/js/alertas.js"></script>
+<script type="text/javascript">
+	alerta_mensajes();
+	alerta_actividades();
+</script>

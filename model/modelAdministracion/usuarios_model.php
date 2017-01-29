@@ -95,8 +95,7 @@ class Usuario_Model {
         $datos = array();
         while ($fila = mysqli_fetch_array($this->result)) {
             array_push($datos, array(
-                "perId" => $fila["personaId"],
-                "persCodigo" => $fila["codigo"],
+                "perId" => $fila["personaId"],                
                 "colaborador" => $fila["colaborador"],
                 "usuLogin" => $fila["login"],                
                 "usuRol" => $fila["rol"],   
