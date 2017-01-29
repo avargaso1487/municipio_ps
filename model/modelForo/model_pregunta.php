@@ -50,11 +50,11 @@ class PreguntaModel {
             $item++;
             echo '<tr>
                     <td style="text-align:center; font-size: 12px; height: 10px; width: 5%; font-weight: bolder;">'.$item.'</td>
-                    <td style="font-size: 12px; height: 10px; width: 25%;">'.html_entity_decode($row[1]).'</td>
-                    <td style="font-size: 12px; height: 10px; width: 35%;">'.html_entity_decode($row[2]).'</td>
-                    <td style="font-size: 12px; height: 10px; width: 8%;" class="text-center">'.$row[3].'</td>';
+                    <td style="font-size: 12px; height: 10px; width: 23%;">'.html_entity_decode($row[1]).'</td>
+                    <td style="font-size: 12px; height: 10px; width: 30%;">'.html_entity_decode($row[2]).'</td>
+                    <td style="font-size: 12px; height: 10px; width: 10%;" class="text-center">'.$row[3].'</td>';
             if ($row[4] == 1) {
-                echo '<td style="font-size: 11px; height: 10px; width: 8%; text-align: center;">
+                echo '<td style="font-size: 11px; height: 10px; width: 10%; text-align: center;">
                           <div id="estado" class="text-center">
                               <span class="label label-WARNING">PENDIENTE</span>
                           </div>
@@ -66,7 +66,7 @@ class PreguntaModel {
                           </div>
                       </td>';
             }
-            echo ' <td style="font-size: 11px; height: 10px; width: 8%; text-align: center;">                        
+            echo ' <td style="font-size: 11px; height: 10px; width: 11%; text-align: center;">                        
                       <div class="action-buttons">';
                           if ($row[4] == 1) {
                               echo '<a href="#" class="tooltip-error" data-rel="tooltip" title="Responder" style="margin-right: 15px;">

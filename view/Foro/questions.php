@@ -79,7 +79,7 @@
 							</li>
 
 							<li>
-								<a href="#" class="active">Preguntas Pendientes</a>
+								<a href="#" class="active">Comentarios Pendientes</a>
 							</li>
 							
 						</ul><!-- /.breadcrumb -->
@@ -99,18 +99,18 @@
 				                    <div class="col-md-12">
 				                        <div id="mensaje2"></div>
 				                        <div class="table-header">
-				                            PREGUNTAS ENVIADAS DESDE EL FORO &nbsp;&nbsp;				                           
+				                            COMENTARIOS ENVIADOS DESDE EL FORO &nbsp;&nbsp;				                           
 				                        </div>
 				                        <div>
 				                            <table id="tablaPreguntas" class="table table-striped table-bordered">
 				                                <thead>
 				                                <tr>
 				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 5%;">N°</th>
-				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 25%;">NOMBRE ESTUDIANTE</th>
-				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 35%;">PREGUNTA/COMENTARIO</th>
-				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 8%;">F. ENVÍO</th>
-				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 8%;">ESTADO</th>				                                    
-				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 8%;">OPERACIONES</th>
+				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 23%;">NOMBRE ESTUDIANTE</th>
+				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 30%;">PREGUNTA / COMENTARIO</th>
+				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 10%;">F. ENVÍO</th>
+				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 10%;">ESTADO</th>				                                    
+				                                    <th style="text-align: center; font-size: 11px; height: 10px; width: 11%;">OPERACIONES</th>
 				                                </tr>
 				                                </thead>
 				                                <tbody id="cuerpoPreguntas">
@@ -131,7 +131,7 @@
 			                    <div class="modal-header">
 			                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			                        <h4 class="modal-title text-center">
-			                        	Envío de Respuesta a pregunta y/o comentario
+			                        	Publicación de comentario
 			                        </h4>
 			                    </div>
 			                    <div class="modal-body">
@@ -139,7 +139,7 @@
 			                        <form role="form" class="form-horizontal">
 			                            <div class="form-body">
 			                                <div class="row">
-			                                	<input type="hidden" id="codigo_pregunta" name="codigo_pregunta">
+			                                	<input type="hidden" id="codigo_pregunta" disabled="disabled" name="codigo_pregunta">
 			                                    <div class="form-group">
 			                                        <label class="col-md-2 control-label">Nombres*</label>
 			                                        <div class="col-md-4">
@@ -167,7 +167,7 @@
 			                                        </div>                                        
 			                                    </div>                           
 			                                    <div class="form-group">
-			                                        <label class="col-md-2 control-label">Respuesta *</label>
+			                                        <label class="col-md-2 control-label">Respuesta</label>
 			                                        <div class="col-md-9">
 			                                            <textarea type="text" class="form-control" id="respuesta_pregunta" name="respuesta_pregunta"></textarea> 
 			                                        </div>                                          
@@ -183,7 +183,8 @@
 			                    </div>
 			                    <div class="modal-footer">
 			                        <button type="button" id="btn_cancelar_respuesta" class="btn dark btn-outline" data-dismiss="modal">Cancelar</button>
-			                        <button type="button" id="btn_enviar_respuesta" class="btn btn-primary">Enviar</button>
+			                        <button type="button" id="btn_eliminar_respuesta" onclick="eliminar()" class="btn btn-danger">Eliminar</button>
+			                        <button type="button" id="btn_enviar_respuesta" class="btn btn-primary">Publicar</button>
 			                    </div>
 			                </div>
 			            </div>
@@ -192,7 +193,7 @@
 				</div>
 			</div><!-- /.main-content -->
 			<input type="hidden" dissabled="true" value="Foro" id="NombreGrupo">
-            <input type="hidden" dissabled="true" value="Preguntas" id="NombreTarea">
+            <input type="hidden" dissabled="true" value="Comentarios Pendientes" id="NombreTarea">
 			<div class="footer">
 				<div class="footer-inner">
 					<div class="footer-content">

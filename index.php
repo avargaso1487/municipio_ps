@@ -104,8 +104,8 @@
 						<div class="col-md-3">
 							<aside class="sidebar">
 								<form>									
-									<a href="#" id="btn_nueva_pregunta" class="btn btn-primary btn-lg btn-block">Haz tu pregunta aquí
-										<i class="fa fa-question-circle"></i>
+									<a href="#" id="btn_nueva_pregunta" class="btn btn-primary btn-lg btn-block">Haz tu comentario aquí&nbsp;
+										<i class="fa fa-pencil-square-o"></i>
 									</a>
 									
 								</form>
@@ -123,7 +123,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
 						</button>
-						<h4 class="modal-title">Enviar mi pregunta</h4>
+						<h4 class="modal-title">Enviar mi comentario</h4>
 					</div>
 					<div class="modal-body">
 						<div id="mensaje"></div>
@@ -149,7 +149,7 @@
 									<label class="control-label">
 										CÓDIGO ESTUDIANTE <span class="symbol required"></span>
 									</label>
-									<input type="text" id="codigo_estudiante" name="codigo_estudiante" class="form-control" maxlength="30">
+									<input type="text" id="codigo_estudiante" name="codigo_estudiante" class="form-control" maxlength="7">
 								</div>
 								<div class="col-md-12 form-group">
 									<label class="control-label">

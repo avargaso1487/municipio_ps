@@ -172,7 +172,7 @@
 				</div>
 			</div><!-- /.main-content -->
 			<input type="hidden" dissabled="true" value="Foro" id="NombreGrupo">
-            <input type="hidden" dissabled="true" value="Respuestas" id="NombreTarea">
+            <input type="hidden" dissabled="true" value="Comentarios Publicados" id="NombreTarea">
 			<div class="footer">
 				<div class="footer-inner">
 					<div class="footer-content">

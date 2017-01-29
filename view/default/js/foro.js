@@ -25,27 +25,23 @@ $(function () {
     $('#btn_enviar_respuesta').on('click', function () {
         var opcion      = 'registrar_respuesta';
         var id_pregunta = document.getElementById('codigo_pregunta').value;
-        var mensaje     = document.getElementById('respuesta_pregunta').value;
-        if (mensaje.length == 0) {
-            $('#mensaje1').html('<p class="alert alert-danger">Ingrese el mensaje de respuesta a la pregunta y/o comentario (*)</p>').show(200).delay(1500).hide(200);
-        } else {
-            $.ajax({
-                type     : 'POST',
-                data     : 'opcion='+opcion+'&id_pregunta='+id_pregunta+'&mensaje='+mensaje,
-                dataType : 'json',
-                encode   : true,
-                url      : '../../controller/controlForo/respuesta_controller.php',
-                success : function(data){                           
-                    if (data == 1)  {       
-                        $('#modal_question').modal('hide');                         
-                        $('#mensaje2').html('<p class="alert alert-success">La respuesta se ENVÍO Y PUBLICÓ CORRECTAMENTE.</p>').show(200).delay(2000).hide(200);
-                        mostrarPreguntas();
-                    } else {
-                        $('#mensaje2').html('<p class="alert alert-danger">Ocurrió un problema técnico.</p>').show(200).delay(2000).hide(200);
-                    }
+        var mensaje     = document.getElementById('respuesta_pregunta').value;        
+        $.ajax({
+            type     : 'POST',
+            data     : 'opcion='+opcion+'&id_pregunta='+id_pregunta+'&mensaje='+mensaje,
+            dataType : 'json',
+            encode   : true,
+            url      : '../../controller/controlForo/respuesta_controller.php',
+            success : function(data){                           
+                if (data == 1)  {       
+                    $('#modal_question').modal('hide');                         
+                    $('#mensaje2').html('<p class="alert alert-success">La respuesta se ENVÍO Y PUBLICÓ CORRECTAMENTE.</p>').show(200).delay(2000).hide(200);
+                    mostrarPreguntas();
+                } else {
+                    $('#mensaje2').html('<p class="alert alert-danger">Ocurrió un problema técnico.</p>').show(200).delay(2000).hide(200);
                 }
-            });
-        }
+            }
+        });        
     });
 
     $('#btn_actualizar_respuesta').on('click', function ()  {
@@ -183,6 +179,14 @@ function editarRespuesta(id) {
     });
 }
 
+
+function eliminar() {
+    var codigo_pregunta = document.getElementById('codigo_pregunta').value;
+    console.log(codigo_pregunta);
+    eliminarPregunta(codigo_pregunta);
+    $('#modal_question').modal('hide');
+}
+
 function eliminarPregunta(id){
     var respuesta = confirm('¿Desea ELIMINAR la pregunta y/o comentario?');
     if (respuesta == true) {
@@ -200,8 +204,6 @@ function eliminarPregunta(id){
                 $('#cuerpoPreguntas').html(data);
             }
         });
-    } else {
-        // NADA
     }
 }
 

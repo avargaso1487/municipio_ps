@@ -265,6 +265,8 @@ class Usuario_model
 						<i class="ace-icon fa fa-exclamation-triangle"></i>
 						'.$total_alertas.' Actividades pendientes
 					</li>										
+					<li class="dropdown-content">							
+						<ul class="dropdown-menu dropdown-navbar navbar-pink">						
 				';
 			$this->cerrarAbrir();
 			$this->prepararConsultaAlertaActividades('opc_spa_alertas');
@@ -272,15 +274,23 @@ class Usuario_model
 			for($i=0; $i<count($datos); $i++)
 			{
 				echo'			
-					<li class="dropdown-content">							
-						<ul>						
-						<span class="pull-left badge badge-primary">'.$datos[$i]["alertaPersona"].': '.$datos[$i]["alertaFecha"].'</span>
-						</ul>																					
-					</li>
+					<li>					
+						<a href="#">
+							<div class="clearfix">
+								<span class="pull-left">
+									<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+									'.$datos[$i]["alertaPersona"].': <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<span class="pull-right badge badge-info">'.$datos[$i]["alertaFecha"].'</span>
+								</span>								
+							</div>
+						</a>						
+					</li>				
 					';
 			}			
 
-			echo '												
+			echo '				
+					</ul>																					
+				</li>								
 				<li class="dropdown-footer">
 					<a href="../Actividad/gestionar_actividad.php">
 						Ver Actividades
