@@ -344,7 +344,6 @@
                         <div class="col-xs-12">
                             <p>'.($row[2]).'</p>
                         </div>
-                        <HR class="info" width=100% align="center">
                         <div class="col-xs-12">                                     
                             <p style="font-size: 11px">Fecha: '.($row[4]).'&nbsp;&nbsp;'.($row[5]).'h &nbsp;&nbsp;&nbsp; &nbsp; Autor: '.($row[7]).'</p><br>                                       
                         </div>
@@ -360,6 +359,7 @@
                               <source src="'.($row[9]).'" type="video/ogg">
                               Your browser does not support the video tag.
                             </video>
+                        <HR class="info" width=100% align="center">
                         </div>';
                     } else {
                         echo '<div class="col-xs-12">
@@ -392,7 +392,6 @@
                     <div class="col-xs-12">
                         <p>'.($row[2]).'</p>
                     </div>
-                    <HR class="info" width=100% align="center">
                     <div class="col-xs-12">                                     
                         <p style="font-size: 11px">Fecha: '.($row[4]).'&nbsp;&nbsp;'.($row[5]).'h &nbsp;&nbsp;&nbsp; &nbsp; Autor: '.($row[7]).'</p><br>                                       
                     </div>
@@ -410,6 +409,7 @@
                     </div>
                     <div class="col-xs-12">
                         '.($row[3]).'
+                    <HR class="info" width=100% align="center">
                     </div>';
                 } else {
                     if ($row[8] == 'A') {
@@ -419,7 +419,6 @@
                         <div class="col-xs-12">
                             <p>'.($row[2]).'</p>
                         </div>
-                        <HR class="info" width=100% align="center">
                         <div class="col-xs-12">                                     
                             <p style="font-size: 11px">Fecha: '.($row[4]).'&nbsp;&nbsp;'.($row[5]).'h &nbsp;&nbsp;&nbsp; &nbsp; Autor: '.($row[7]).'</p><br>                                       
                         </div>
@@ -435,6 +434,7 @@
                               <source src="'.($row[9]).'" type="video/ogg">
                               Your browser does not support the video tag.
                             </video>
+                        <HR class="info" width=100% align="center">
                         </div>';
                     } else {
                         echo '<div class="col-xs-12">
@@ -443,12 +443,12 @@
                                 <div class="col-xs-12">
                                     <p>'.($row[2]).'</p>
                                 </div>
-                                <HR class="info" width=100% align="center">
                                 <div class="col-xs-12">                                     
                                     <p style="font-size: 11px">Fecha: '.($row[4]).'&nbsp;&nbsp;'.($row[5]).'h &nbsp;&nbsp;&nbsp; &nbsp; Autor: '.($row[7]).'</p><br>                                       
                                 </div>                                
                                 <div class="col-xs-12">
                                     '.($row[3]).'
+                                <HR class="info" width=100% align="center">
                                 </div>';
                     }
                 }              

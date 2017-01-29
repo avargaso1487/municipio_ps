@@ -182,7 +182,7 @@
 		<!-- end: MAIN CONTAINER -->
 		<!-- start: FOOTER -->
 			
-			<div class="footer-copyright">
+			<div class="footer-copyright navbar-fixed-bottom">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-4">

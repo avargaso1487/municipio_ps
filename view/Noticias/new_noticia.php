@@ -116,7 +116,7 @@
 												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarImagen()" value="I"><span class="lbl">&nbsp;SOLO IMAGEN</label>
 												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarvideo()" value="V"><span class="lbl">&nbsp;SOLO VIDEO</label>
 												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarAmbos()" value="A"><span class="lbl">&nbsp;AMBOS</label>
-												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarNinguno()" value="N"><span class="lbl">&nbsp;NINGUNO</label>
+												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" checked class="ace" onclick="seleccionarNinguno()" value="N"><span class="lbl">&nbsp;NINGUNO</label>
 											</div>											
 			                            </div>
 			                            <div class="form-group"> 
@@ -152,26 +152,11 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
-							Application &copy; 2013-2014
-						</span>
-
-						&nbsp; &nbsp;
-						<span class="action-buttons">
-							<a href="#">
-								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-							</a>
-
-							<a href="#">
-								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-							</a>
-
-							<a href="#">
-								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-							</a>
-						</span>
+							<span class="blue bolder">BSE</span>
+							&copy; 2017
+						</span>						
 					</div>
-				</div>
+				</div>					
 			</div>
 
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
@@ -314,5 +299,5 @@
 <script src="../default/js/alertas.js"></script>
 <script type="text/javascript">
 	alerta_mensajes();
-	//alerta_actividades();
+	alerta_actividades();
 </script>
