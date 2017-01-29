@@ -1,6 +1,5 @@
 <?php 
 	session_start();
-
 	$permiso = $_SESSION['usuarioExtraordinario'];;		//1: Puede agregar, 0:No puede agregar
 	if(!isset($_SESSION['usuario']))
 	{
@@ -382,15 +381,15 @@ function inicar_calendario(eventos){
 		selectable: true,
 		selectHelper: true,
 		select: function(start, end, allDay) {
-			if (permiso == 0 ) {
-				return;
-			}
+			if (permiso == 0 ) return; 
+			
 			abrirModal("#modal_actividad");
 			limpiarForm("#modal_actividad");
-			var d = new Date(start);
+			var d = new Date(end);
+			// var df = new Date(end);
 			var anual=d.getFullYear();
 			var mes= d.getMonth()+1;
-			var dia= d.getDate()+1;
+			var dia= d.getDate();			
 			if(dia<10) dia = "0"+dia+"";
 			if(mes<10) mes = "0"+mes+"";
 			
@@ -626,12 +625,10 @@ function inicar_calendario(eventos){
 				</div>\
 				<!-- /.modalactividades -->';
 			}
-			
-
 			var modal = $(modal).appendTo('body');
 
 			modal.find('form').on('submit', function(ev){
-				r = confirm("Seguro que desea modificar la actividad?");
+				r = confirm("¿Seguro que desea modificar la actividad?");
 					if (r != true){
 					  return false;
 				}
@@ -678,7 +675,7 @@ function inicar_calendario(eventos){
 			});
 
 			modal.find('button[data-action=delete]').on('click', function() {
-				r = confirm("Seguro que desea anular la actividad?\nRecuerde que esta operación es irreversible.");
+				r = confirm("¿Seguro que desea anular la actividad?\nRecuerde que esta operación es irreversible.");
 					if (r != true){
 					  return false;
 				}
@@ -814,7 +811,7 @@ function cargar_actividades(){
 				ds['ambitoID'] = obj[i].ambitoID;
 				ds['descripcion'] = obj[i].descripcion;
 				ds['lugar'] = obj[i].lugar;
-				ds['fecha'] = obj[i].fecha;
+				ds['fecha'] = ""+arrayFecha[2]+'-'+(arrayFecha[1])+'-'+ arrayFecha[0] ;
 				ds['prioridad'] = obj[i].prioridad;
 				data.push(ds);
 			}
@@ -836,6 +833,7 @@ function guardar_actividad(form){
 	var descripcion = $('#txtDescripcion').val();
 	var lugar = $('#txtLugar').val();
 	var prioridad = $('#cboPrioridad').val();
+	var fecha = $('#txtFecha').val();
 
 	inputMinimo('#txtActividad',3);
 	valorNoValido('#cboAmbito',0);
@@ -863,7 +861,7 @@ function guardar_actividad(form){
       success: function(rpta){
       	if (rpta >= 1) {
       		alertify.success("Operación exitosa.");
-      		agregar_actividad(actividad,start,end,"",label,rpta, ambitoID,descripcion,lugar,prioridad);
+      		agregar_actividad(actividad,start,end,"",label,rpta, ambitoID,descripcion,lugar,prioridad,fecha);
       		
       	}else{
       		alertify.error("No se pudo registrar."+rpta);
@@ -895,7 +893,7 @@ function limpiarForm(miForm) {
 		}
 	});
 }
-function agregar_actividad(title,start,end,allDay,label,actividadID, ambitoID,descripcion,lugar,prioridad ){
+function agregar_actividad(title,start,end,allDay,label,actividadID, ambitoID,descripcion,lugar,prioridad,fecha ){
 	var calendar = $('#calendar').fullCalendar();
 	calendar.fullCalendar('renderEvent',
 		{
@@ -905,6 +903,7 @@ function agregar_actividad(title,start,end,allDay,label,actividadID, ambitoID,de
 			allDay: true,
 			className: label,
 
+			fecha: fecha,
 			actividadID: actividadID,
 			ambitoID: ambitoID,
 			descripcion: descripcion,
