@@ -70,6 +70,11 @@
 								</a>
 							</li>
 							<li>
+								<a href="#" id="btn_nueva_pregunta">
+									Comentario
+								</a>
+							</li>
+							<li>
 								<a href="view/home/login.php">
 									Municipio
 								</a>
