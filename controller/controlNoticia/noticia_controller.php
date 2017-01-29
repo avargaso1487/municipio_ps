@@ -12,6 +12,8 @@
 
     $param['noticia'] = ''; 
 
+    
+
 
     $param['param_archivoImagen'] = '';
     $param['param_fileArchivoImagen'] = '';   
@@ -38,6 +40,12 @@
 
     if(isset($_POST['param_codigo'])){ $param['param_codigo'] = $_POST['param_codigo']; }
 
+
+
+
+
+
+
     if(isset($_FILES['Imagen']['name'])){ 
         $param['param_archivoImagen'] = $_FILES['Imagen']['name']; 
     }
@@ -50,6 +58,8 @@
         $param['param_tipoVideo'] = $_FILES['video']['type']; 
     }
 
+
+
     if(isset($_FILES['video']['name'])){ 
         $param['param_archivoVideo'] = $_FILES['video']['name']; 
     }
@@ -59,6 +69,8 @@
     $param['rutaVideo'] = '../../view/Noticias/Video/'.$param['param_archivoVideo']; 
 
     //var_dump($_FILES['video']);
+
+    //echo $param['Imagen'];
 
     $Noticia = new Noticia_model();
     echo $Noticia->gestionar($param);

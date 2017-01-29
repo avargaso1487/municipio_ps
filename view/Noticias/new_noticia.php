@@ -15,7 +15,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Blank Page - Ace Admin</title>
+		<title>Noticia-Nuevo</title>
 
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -114,8 +114,9 @@
 			                               <label for="socio" class="col-md-2 control-label">MULTIMEDIA: </label>
 											<div class="col-md-9">
 												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarImagen()" value="I"><span class="lbl">&nbsp;SOLO IMAGEN</label>
-												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarvideo()" value="V"><span class="lbl">&nbsp;SOLO video</label>
+												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarvideo()" value="V"><span class="lbl">&nbsp;SOLO VIDEO</label>
 												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarAmbos()" value="A"><span class="lbl">&nbsp;AMBOS</label>
+												<label class="radio-inline ace"><input type="radio" id="param_multimedia" name="param_multimedia" class="ace" onclick="seleccionarNinguno()" value="N"><span class="lbl">&nbsp;NINGUNO</label>
 											</div>											
 			                            </div>
 			                            <div class="form-group"> 
@@ -271,6 +272,8 @@
 				          	            
 				        	$('#Imagen').ace_file_input('reset_input');
 				        	$('#video').ace_file_input('reset_input');
+
+				        	window.location.href = "noticia.php"; 
 				        
 				        });
 			        }		        
@@ -294,6 +297,11 @@
 			function seleccionarAmbos() {	
 				document.getElementById('Imagen').disabled = false;
 				document.getElementById('video').disabled = false;
+			}
+
+			function seleccionarNinguno() {	
+				document.getElementById('Imagen').disabled = true;
+				document.getElementById('video').disabled = true;
 			}
 
 

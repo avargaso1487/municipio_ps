@@ -2,7 +2,7 @@ window.onload = function () {
 
     mostrarForo();
     alerta_spa();
-    
+    mostrarNoticias();
 	$('*').bind("cut copy paste",function(e) {
 		e.preventDefault();
     });
@@ -98,6 +98,16 @@ function codigoCaptcha () {
 	})
 }
 
+function mostrarNoticias() {
+    $.ajax({
+        type:'POST',
+        data: {param_opcion:'listar_noticias2'},        
+        url: "controller/controlNoticia/noticia_controller.php",
+        success:function(data){                  
+            $('#noticias').html(data);                                                        
+        }
+    });
+}
 
 function soloNumeros(e) {
     key = e.keyCode || e.which;

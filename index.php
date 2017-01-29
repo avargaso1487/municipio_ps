@@ -26,6 +26,7 @@
 		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 		<link rel="stylesheet" href="assets/plugins/summernote/build/summernote.css">
 		<link rel="stylesheet" href="assets/plugins/bootstrap-social-buttons/social-buttons-3.css">
+		<link rel="stylesheet" href="view/default/css/style.css" />
 		<link rel="stylesheet" href="assets/plugins/flex-slider/flexslider.css">
 		<link href="assets/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css"/>
 		<link href="assets/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
@@ -95,25 +96,18 @@
 			<section class="wrapper">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-9">
+						<div class="col-md-6">
 							<div class="blog-posts" id="cuerpo_foro">
 																
 								
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-6">
 							<aside class="sidebar">
-								<form>									
-									<a href="#" id="btn_nueva_pregunta" class="btn btn-primary btn-lg btn-block">Haz tu comentario aquí&nbsp;
-										<i class="fa fa-pencil-square-o"></i>
-									</a>
+								<h1>Noticias</h1><br>								
+								<div id="noticias">
 									
-								</form>
-								<hr>																
-								<hr>								
-								<hr>								 
-								<hr>								
-								<img src="assets/images/logo_ps.jpg" class="img-responsive">			
+								</div>		
 							</aside>	
 						</div>
 					</div>
@@ -251,6 +245,7 @@
 		<script src="assets/js/form-validation.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script src="view/default/js/principal.js"></script>
+
 		<script>
 			jQuery(document).ready(function() {
 				Main.init();				
